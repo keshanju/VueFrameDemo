@@ -12,7 +12,7 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test-debug": "vue-cli-service serve",
-    "test-dev": "vue-cli-service build && cd dev/ && node replace.js",
+    "test-dev": "vue-cli-service build && cd dev/ && node replace.js && cd ..",
     "leishen-dev": "vue-cli-service build && cd dev/ && node replace.js && sh leishen.sh && cd ..",
     "leishen-test": "vue-cli-service build && cd test/ && node replace.js  && cd ..",
     "leishen-vfbuild": "vue-cli-service build && cd vfbuild/ && node replace.js  && cd ..",
