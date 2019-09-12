@@ -1,10 +1,10 @@
 import router from './router/index'
-import "@/assets/less/nnn.less"
+// import "@/assets/less/nnn.less"
 import './permission'
 import Vue from 'vue'
 import "babel-polyfill";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
     router,

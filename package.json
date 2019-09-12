@@ -1,18 +1,18 @@
 {
-  "name": "demo_project",
+  "name": "vue_frame_demo",
   "version": "0.1.0",
   "license": "GPL-3.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "http://gitlab.leigod.top/zhanghongwei/leigod_vue.git"
+    "url": "https://github.com/keshanju/VueFrameDemo.git"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test-debug": "vue-cli-service serve",
-    "leishen-debug": "vue-cli-service serve",
+    "test-dev": "vue-cli-service build && cd dev/ && node replace.js",
     "leishen-dev": "vue-cli-service build && cd dev/ && node replace.js && sh leishen.sh && cd ..",
     "leishen-test": "vue-cli-service build && cd test/ && node replace.js  && cd ..",
     "leishen-vfbuild": "vue-cli-service build && cd vfbuild/ && node replace.js  && cd ..",
