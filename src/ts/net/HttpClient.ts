@@ -33,9 +33,6 @@ export default class HttpClient implements IHttp {
     public static URL_IS_CAPTCHA_LIST = "/tools/is_captcha/list";
     public static URL_TOOL_SYSTEM_TIME = "/tools/system_time"; //获取系统时间
     public static URL_AD = "/tools/advertise"; //获取广告位
-
-
-
     // user
     public static URL_USER_INFO = "/api/user/info";
     public static URL_USER_PACKAGE = "/api/user/package";
@@ -47,8 +44,7 @@ export default class HttpClient implements IHttp {
     public static URL_USER_RECEIVE = "/api/user/receive"; //用户活动 - 奖品领奖
     public static URL_USER_INVOICE_BUY = "/api/user/invoice/buy";
     public static URL_USER_PACKAGE_SWITCH = "/api/user/package/switch";
-    public static URL_USER_PACKAGE_SWITCH_CONFIRM =
-        "/api/user/package/switch/confirm";
+    public static URL_USER_PACKAGE_SWITCH_CONFIRM ="/api/user/package/switch/confirm";
     public static URL_USER_CDKey='/api/user/card/cdkey';
     public static URL_USER_UPLOAD = "/api/user/upload";
     public static URL_USER_EDIT = "/api/user/edit";
@@ -67,8 +63,7 @@ export default class HttpClient implements IHttp {
     public static URL_AUTH_OPEN_LIST = "/api/user/open/list"; //用户第三方登录已绑定列表
     public static URL_USER_BIND_EMAIL = "/api/user/bind/email"; //绑定邮箱
     public static URL_USER_BIND_PHONE = "/api/user/bind/phone"; //绑定手机号
-    public static URL_USER_VERIFY_CODE_VALIDATE =
-        "/api/user/verify_code/validate"; //验证用户验证码
+    public static URL_USER_VERIFY_CODE_VALIDATE = "/api/user/verify_code/validate"; //验证用户验证码
     public static URL_USER_CLEAR_EMAIL = "/api/user/clear/email"; //解绑邮箱
     public static URL_USER_CLEAR_PHONE = "/api/user/clear/phone"; //解绑手机号
     public static URL_USER_MODIFY_EMAIL = "/api/user/modify/email"; //修改邮箱账号
@@ -108,7 +103,8 @@ export default class HttpClient implements IHttp {
 
     //暑期特惠活动折扣码
     public static URL_USER_DISCOUNT_INVOICE = "/api/user/discount/invoice";//暑假特惠折扣码优惠
-    //
+    //文章列表
+    public static URL_ARTICEL_LIST = "educrm/article/list";
     protected BASE_URL = "";
 
     //
