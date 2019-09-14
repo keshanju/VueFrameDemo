@@ -1,6 +1,6 @@
 import { Component, Vue } from "vue-property-decorator";
 import "babel-polyfill";
-import "@/assets/less/my_flex.less";
+import "@/assets/less/test.less";
 
 Vue.config.productionTip = false;
 

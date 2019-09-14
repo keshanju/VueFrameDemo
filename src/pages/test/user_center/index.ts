@@ -1,5 +1,5 @@
 import router from './router/index'
-// import "@/assets/less/nnn.less"
+import "@/assets/less/test.less"
 import './permission'
 import Vue from 'vue'
 import "babel-polyfill";
