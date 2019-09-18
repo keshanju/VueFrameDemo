@@ -21,6 +21,7 @@ export default class HttpClient implements IHttp {
     public static URL_AUTH_LOGOUT = "/api/auth/logout";
     public static URL_AUTH_BIND_PLAT = "/api/auth/open/bind";
     public static URL_AUTH_FOREIGN_LOGIN = "/api/auth/open/foreign";
+
     // tools
     public static URL_CODE_CAPTCHA = "/tools/captcha";
     public static URL_CODE_IS_CAPTCHA = "/tools/is_captcha";
@@ -33,6 +34,7 @@ export default class HttpClient implements IHttp {
     public static URL_IS_CAPTCHA_LIST = "/tools/is_captcha/list";
     public static URL_TOOL_SYSTEM_TIME = "/tools/system_time"; //获取系统时间
     public static URL_AD = "/tools/advertise"; //获取广告位
+
     // user
     public static URL_USER_INFO = "/api/user/info";
     public static URL_USER_PACKAGE = "/api/user/package";
@@ -68,9 +70,11 @@ export default class HttpClient implements IHttp {
     public static URL_USER_CLEAR_PHONE = "/api/user/clear/phone"; //解绑手机号
     public static URL_USER_MODIFY_EMAIL = "/api/user/modify/email"; //修改邮箱账号
     public static URL_USER_MODIFY_PHONE = "/api/user/modify/phone"; //修改手机账号
+
     //news
     public static URL_NEWS = "/api/news";
     public static URL_NEWS_DETAIL = "/api/news/";
+
     // activity list
     public static URL_ACTIVITY_LIST = "/api/activity"; //获取活动列表
     public static URL_ACTIVITY_DETAIL = "/api/activity/"; //获取活动详情+id
@@ -79,11 +83,14 @@ export default class HttpClient implements IHttp {
     public static URL_ACTIVITY_PRESENT_LIST = "/api/activity/present"; //获取活动已中奖列表
     public static URL_ACTIVITY_PICTURE_LIST = "/api/activity/picture/list"; // 获取活动图片列表
     public static URL_ACTIVITY_REFER_LIST = "/api/user/refer/lists"; // 获取用户已推荐列表
+
     // 活动
     public static URL_ACTIVITY_DRAW = "/api/activity/draw"; // 用户活动抽奖
     public static URL_PRESENT_INFO = "/api/present"; // 根据活动id获取活动奖品列表
     public static URL_ATTENTION_ISJOIN = "/api/activity/attention/isjoin";
     public static URL_ATTENTION_JOIN = "/api/activity/attention/join";
+    public static URL_USER_DISCOUNT_INVOICE = "/api/user/discount/invoice";//暑假特惠折扣码优惠
+
     //支持游戏
     public static URL_GAME = "/api/game";//获取游戏列表
 
@@ -101,10 +108,6 @@ export default class HttpClient implements IHttp {
     public static URL_WALL_DOWNLOAD_LOG = "/api/wall/download/log"; //用户壁纸下载记录
     public static URL_WALL_LOG_SWITCH = "/api/user/wall/switch";//设置壁纸漫游状态
 
-    //暑期特惠活动折扣码
-    public static URL_USER_DISCOUNT_INVOICE = "/api/user/discount/invoice";//暑假特惠折扣码优惠
-    //文章列表
-    public static URL_ARTICEL_LIST = "educrm/article/list";
     protected BASE_URL = "";
 
     //
@@ -125,13 +128,11 @@ export default class HttpClient implements IHttp {
         try {
             let backData = await axios.get(url, params);
             let backData1 = backData.data as IdataModel<T>;
-
             return backData1;
         } catch (e) {
             const errorData = new DataModel();
             errorData.code = HttpClient.HTTP_ERROR_NEW_CODE;
             errorData.msg = "网络错误!";
-
             return errorData;
         }
     }
@@ -152,7 +153,6 @@ export default class HttpClient implements IHttp {
             const errorData = new DataModel();
             errorData.code = HttpClient.HTTP_ERROR_NEW_CODE;
             errorData.msg = "网络错误!";
-
             return errorData;
         }
     }

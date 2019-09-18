@@ -83,6 +83,20 @@ module.exports = {
     productionSourceMap: false,
     devServer: {
         index: 'index.html',
+        hot: true,
+        host: 'localhost',
+        port: '3000',
+        proxy: {
+            '/api': {
+                target: 'http://dev-dengbo.xiaomingkeji.com/api/index.php?r=',  // 接口域名
+                ws: true,
+                secure: false,  // 如果是https接口，需要配置这个参数
+                changeOrigin: true,  //是否跨域
+                pathRewrite: {
+                    '^/api': 'localhost:3000' //这里理解成用'/api'代替target里面的地址,比如我要调用'http://40.00.100.100:3002/user/add'，直接写'/api/user/add'即可
+                }
+            }
+        }
     },
     filenameHashing: debug,
     runtimeCompiler: true,

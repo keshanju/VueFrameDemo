@@ -788,3 +788,10 @@ export class AdModel {
     url: string
 }
 
+export class DegnLuRequestModel {
+    public guid: number = 0;
+    public password: number = 0;
+    public username: string = "";
+    public signature: string = ""
+}
+

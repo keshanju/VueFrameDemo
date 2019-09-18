@@ -9,53 +9,41 @@ import LocalStorageUtil from "@/ts/utils/LocalStorageUtil";
  */
 export default class GlobalConfig {
     public static server_type;
-    public static checkEnv(){
-        let nowUrl=$('html').attr('domain');
-        if(nowUrl){
-            if(nowUrl.indexOf('dev-api')>-1){
+
+    public static checkEnv() {
+        let nowUrl = $('html').attr('domain');
+        if (nowUrl) {
+            if (nowUrl.indexOf('dev-dengbo.xiaomingkeji') > -1) {
                 return 1;
-            }else if(nowUrl.indexOf('test-api')>-1){
+            } else if (nowUrl.indexOf('test.xiaomingkeji') > -1) {
                 return 2;
-            }else if(nowUrl.indexOf('vf-webapi')>-1||nowUrl.indexOf('vf-hkapi1')>-1){
+            } else if (nowUrl.indexOf('bbb.yunhan100') > -1) {
                 return 4;
-            }else{
+            } else {
                 return 3;
             }
-        }else{
-                return ProjectConfig.server_type;
+        } else {
+            return ProjectConfig.server_type;//默认为本地开发环境
         }
-
-
     }
-
-    public static UC_IM_Number: string = "2FAepT";
 
     /**
      * 服务器url
      */
     public static getBaseUrl() {
-
         this.server_type = this.checkEnv();
         if (this.server_type === 1) {
             // 开发环境
-            return "http://dev-api1.leigod.com";
+            return "http://localhost:3000/api";
         } else if (this.server_type === 2) {
             // 测试环境
-            return "http://test-api2.leigod.com";
+            return "http://test.xiaomingkeji.com/api/index.php?r=";
         } else if (this.server_type === 3) {
             // 生产环境
-            if(LocalStorageUtil.getRegionCodes() == Util.REGION_CODE_0) {
-                return "https://webhkapi.leigod.com";
-            }else {
-                return "https://webapi.leigod.com";
-            }
-        }else if (this.server_type === 4) {
+            return "https://api.yunhan100.com";
+        } else if (this.server_type === 4) {
             // 验证环境
-            if(LocalStorageUtil.getRegionCodes() == Util.REGION_CODE_0) {
-                return "https://vf-hkapi1.leigod.com";
-            }else {
-                return "https://vf-webapi.leigod.com";
-            }
+            return "https://bbb.yunhan100.com";
         } else {
             return '';
         }
@@ -75,7 +63,7 @@ export default class GlobalConfig {
         } else if (this.server_type === 3) {
             // 生产环境
             return "https://picture.leigod.com";
-        }else if (this.server_type === 4) {
+        } else if (this.server_type === 4) {
             // 验证环境
             return "http://vf-picture.leigod.com";
         } else {
@@ -88,7 +76,7 @@ export default class GlobalConfig {
      */
     public static getWebBaseUrl() {
         this.server_type = this.checkEnv();
-        console.log('环境'+this.server_type)
+        console.log('环境' + this.server_type)
         if (this.server_type === 1) {
             // 开发环境
             return "http://dev-www.leigod.com";
@@ -99,7 +87,7 @@ export default class GlobalConfig {
         } else if (this.server_type === 3) {
             // 生产环境
             return "https://www.leigod.com";
-        }else if (this.server_type === 4) {
+        } else if (this.server_type === 4) {
             // 验证环境
             return "https://vf-www.leigod.com";
         } else {
@@ -122,7 +110,7 @@ export default class GlobalConfig {
         } else if (this.server_type === 3) {
             // 生产环境
             return "https://xiazai.leigod.com/";
-        }else if (this.server_type === 4) {
+        } else if (this.server_type === 4) {
             // 验证环境
             return "https://vf-xiazai.leigod.com/";
         } else {
@@ -144,7 +132,7 @@ export default class GlobalConfig {
         } else if (this.server_type === 3) {
             // 生产环境
             return "https://user.leigod.com";
-        }else if (this.server_type === 4) {
+        } else if (this.server_type === 4) {
             // 验证环境
             return "https://vf-user.leigod.com";
         } else {
@@ -167,7 +155,7 @@ export default class GlobalConfig {
         } else if (this.server_type === 3) {
             // 生产环境
             return "https://staffapi.leigod.com";
-        }else if (this.server_type === 4) {
+        } else if (this.server_type === 4) {
             // 验证环境
             return "https://vf-staffapi.leigod.com";
         } else {
@@ -190,7 +178,7 @@ export default class GlobalConfig {
         } else if (this.server_type === 3) {
             // 生产环境
             return 'https://m.leigod.com';
-        }else if (this.server_type === 4) {
+        } else if (this.server_type === 4) {
             // 验证环境
             return 'https://vf-m.leigod.com';
 
@@ -202,9 +190,9 @@ export default class GlobalConfig {
     /**
      * 输出
      */
-    public static log(...args:any[]) {
-        if(ProjectConfig.isDebug) {
-            for(let i= 0;i < args.length;i++) {
+    public static log(...args: any[]) {
+        if (ProjectConfig.isDebug) {
+            for (let i = 0; i < args.length; i++) {
                 console.log(args[i]);
             }
         }

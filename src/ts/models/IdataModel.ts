@@ -32,3 +32,20 @@ export class XmlDataModel {
     public count?: number; //
     public items?: any; //套餐详情
 }
+
+export interface YdataModel<T> {
+    errorcode: number;//返回码
+    msgs: string;//返回信息
+    version: string;//版本号
+    data: T;//主数据 json格式
+}
+
+/**
+ * API data
+ */
+export class YuhanDataModel<T> implements YdataModel<T>{
+    public errorcode: number = 0;
+    public msgs: string = '';
+    public version: string = '';
+    public data: any;
+}
