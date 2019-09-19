@@ -1,7 +1,13 @@
 <template>
     <div>
+        <div>
+            hello , world!
+            这是入口
+        </div>
         <transition name="fade-transform" mode="out-in">
-            <router-view></router-view>
+            <router-view>
+
+            </router-view>
         </transition>
     </div>
 </template>
