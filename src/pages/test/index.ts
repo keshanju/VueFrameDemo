@@ -4,13 +4,14 @@ import "babel-polyfill"
 import GlobalConfig from './global.config'
 import {ArticleListRequestModel, ArticleListResponseModel} from '@/ts/models/ArticelModel'
 import {ClassListRequestModel, ClassListResponseModel} from '@/ts/models/ClassModel'
-import {DegnLuRequestModel} from '@/ts/models/UserModel'
+import {toLoginRequestModel} from '@/ts/models/UserModel'
 import HttpRequest from "@/ts/net/HttpRequest"
 import {IdataModel} from "@/ts/models/IdataModel";
 import WebParamModel from "@/ts/models/WebModel";
 import {TdappModel} from "@/ts/models/TdappModel";
 import JumpWebUtil from "@/ts/utils/JumpWebUtil";
 import {Input, Option, Radio, Select, Button} from "element-ui";
+import router from './user_center/router'
 
 Vue.config.productionTip = false;
 
@@ -71,7 +72,7 @@ class Index extends Vue {
      */
     public async toLogin() {
         let url = HttpRequest.HTTP_LOG_IN;
-        let params = new DegnLuRequestModel();
+        let params = new toLoginRequestModel();
         params.guid = 2965059139;
         params.password = 905148;
         params.username = "13410905148";
@@ -80,8 +81,12 @@ class Index extends Vue {
         console.log(this.postData);
     }
 
-    public checkTabs(id: number) {
-        this.tab_id = id;
+
+    public jumpLogin() {
+        window.location.href = "/login"
+        // this.$router.push({ path: "/user_center/#/login" });
     }
 }
-new Index().$mount("#app");
+new Index({
+    router
+}).$mount("#app");

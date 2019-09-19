@@ -788,10 +788,17 @@ export class AdModel {
     url: string
 }
 
-export class DegnLuRequestModel {
+export class toLoginRequestModel {
     public guid: number = 0;
     public password: number = 0;
     public username: string = "";
     public signature: string = ""
+}
+
+export class toLoginResponseModel {
+    public errorcode: number = 0;
+    public msgs: string = '';
+    public version: string = '';
+    public data: any;
 }
 
