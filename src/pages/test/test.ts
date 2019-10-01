@@ -1,6 +1,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import "babel-polyfill";
 import "@/assets/less/test.less";
+import router from './user_center/router/index'
 
 Vue.config.productionTip = false;
 
@@ -14,4 +15,4 @@ class Test extends Vue {
         console.log(id)
     }
 }
-new Test().$mount("#app");
+new Test({router}).$mount("#app");

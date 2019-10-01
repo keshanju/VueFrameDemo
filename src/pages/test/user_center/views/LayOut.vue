@@ -3,11 +3,12 @@
         <div>
             hello , world!
             这是入口
+            <router-link to="/user_center/home">测试主页</router-link>
+            <router-link to="/user_center/club">测试副页</router-link>
         </div>
         <transition name="fade-transform" mode="out-in">
-            <router-view>
-
-            </router-view>
+            <!--                路由占位符-->
+            <router-view></router-view>
         </transition>
     </div>
 </template>
