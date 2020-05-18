@@ -789,10 +789,28 @@ export class AdModel {
 }
 
 export class toLoginRequestModel {
-    public guid: number = 0;
-    public password: number = 0;
-    public username: string = "";
-    public signature: string = ""
+    /** 電話國際碼 */
+  phoneAreaCode: string;
+  /** 電話號碼 */
+  phoneNumber: string;
+  /** 電子信箱 */
+  email: string;
+  /** 會員帳戶密碼 */
+  password: string;
+  /** 裝置識別碼 */
+  deviceId: string;
+  /** 簡訊subject */
+  entity: string;
+  /**
+   * 登入方式，
+   * value: phone,email
+   */
+  loginType: string;
+  /**
+   *  登入平台，
+   *  vlaue: web, app
+   */
+  platform: string;
 }
 
 export class toLoginResponseModel {

@@ -6,4 +6,4 @@ import router from './router/index'
 
 Vue.config.productionTip = false;
 
-new Vue({ router }).$mount('#app');
+new Vue({router}).$mount('#app');
