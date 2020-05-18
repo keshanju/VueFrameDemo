@@ -1,5 +1,5 @@
 import LocalStorageUtil from './LocalStorageUtil';
-import GlobalConfig from "@/pages/test/global.config";
+import GlobalConfig from "@/pages/ClientPortal/global.config";
 import JumpWebUtil from "@/ts/utils/JumpWebUtil";
 
 /**

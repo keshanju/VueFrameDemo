@@ -24,7 +24,7 @@ import $ from "jquery";
 import {Luck} from "@/ts/models/Luck.ts";
 // import JumpWeiXin from "@/pages/leishen_app/util/jump";
 import JumpWebUtil from "../utils/JumpWebUtil";
-import GlobalConfig from "@/pages/test/global.config";
+import GlobalConfig from "@/pages/ClientPortal/global.config";
 import { Toast } from "vant";
 Vue.use(Toast);
 @Component

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Client Portal Login</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <div class="text_center pad_t20">
+      <el-form ref="userFormDom" :model="userModel" :rules="userModel" label-width="80px">
+        <el-form-item label="活动名称" :props="userModel.name">
+          <el-input v-model="userForm.name"></el-input>
+        </el-form-item>
+        <el-button type="primary" @click="goLogin">登录</el-button>
+      </el-form>
+    </div>
+
+    <p>{{test_str}}</p>
+    <a href="/user_center/index.html">跳转用户中心</a>
+  </div>
+</body>
+
+</html>
