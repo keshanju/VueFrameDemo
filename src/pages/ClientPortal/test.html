@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  h1 {
+    text-align: center;
+    color: red;
+  }
+
+  h3 {
+    text-align: center;
+    color: blue;
+  }
+
+  a {
+    color: #000;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <div>
+      <a>当前浏览器:</a>
+      <span class="red">{{browserModel.browser}}</span>
+      <span class="red">{{browserModel.browser_version}}</span>
+    </div>
+
+    <div>
+      <a>是否移动端:</a>
+      <span>【weixin】{{isDeviceWx}}</span>
+      <span>【android】{{isDeviceAndroid}}</span>
+      <span>【ios】{{isDeviceIos}}</span>
+    </div>
+
+    <div>
+      <a>多语言测试:</a>
+      <span class="red">{{$t("public.share28")}}</span>
+    </div>
+
+    <div class="mag_1">
+      <button @click="testGet">测试Get请求</button>
+      <a>{{getData}}</a>
+    </div>
+
+    <div class="mag_1">
+      <button @click="testPost">测试Post请求</button>
+      <a>{{postData}}</a>
+    </div>
+
+    <div class="mag_1">
+      <a>element-ui 兼容测试</a>
+      <div class="mag_1">
+        <el-radio v-model="radio" label="1">备选项1</el-radio>
+        <el-radio v-model="radio" label="2">备选项2</el-radio>
+      </div>
+      <div class="mag_1" style="width: 200px;">
+        <el-input prefix-icon="el-icon-search" placeholder="请输入内容" size="small"></el-input>
+      </div>
+      <div class="mag_1">
+        <el-select v-model="value" placeholder="请选择" size="small">
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+          </el-option>
+        </el-select>
+      </div>
+    </div>
+
+    <h1>***************************************************</h1>
+
+    <!--常见布局列表，分为两套，一套是flex，一套是fload;对应的每一个布局的实现要有两套写法-->
+    </div>
+  </div>
+</body>
+
+</html>

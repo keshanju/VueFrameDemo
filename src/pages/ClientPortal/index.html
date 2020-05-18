@@ -8,35 +8,9 @@
   <title>测试</title>
 </head>
 
-<body class="pad_l20 pad_t20">
+<body>
 <div id="app">
-  <a class="mar_t20">element-ui 兼容测试</a>
-  <div class="mar_t20">
-    <el-radio v-model="radio" label="1">备选项1</el-radio>
-    <el-radio v-model="radio" label="2">备选项2</el-radio>
-  </div>
-  <div class="mar_t20" style="width: 200px;">
-    <el-input prefix-icon="el-icon-search" placeholder="请输入内容" size="small"></el-input>
-  </div>
-  <div class="mar_t20">
-    <el-select v-model="value" placeholder="请选择" size="small">
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-      </el-option>
-    </el-select>
-  </div>
-
-  <div class="mar_t20">
-    <a>当前浏览器:</a>
-    <span class="red">{{browserModel.browser}}</span>
-    <span class="red">{{browserModel.browser_version}}</span>
-  </div>
-
-  <div class="mar_t20">
-    <a>是否移动端:</a>
-    <span>【weixin】{{isDeviceWx}}</span>
-    <span>【android】{{isDeviceAndroid}}</span>
-    <span>【ios】{{isDeviceIos}}</span>
-  </div>
+  默认首页
 </div>
 </body>
 
