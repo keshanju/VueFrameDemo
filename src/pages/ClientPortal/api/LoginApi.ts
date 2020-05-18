@@ -1,7 +1,6 @@
 import BaseApi from './BaseApi'
 import HttpRequest from "@/ts/net/HttpRequest";
 import { toLoginRequestModel, toLoginResponseModel } from "@/ts/models/UserModel";
-import { YdataModel } from "@/ts/models/IdataModel";
 
 //   引入基类
 
