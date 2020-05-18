@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import {Vue, Component} from "vue-property-decorator";
-import SideNavbar from './components/SideNavbar.vue';
-import TopNavbar from './components/TopNavbar.vue';
+import SideNavbar from '../core/SideNavbar.vue';
+import TopNavbar from '../core/TopNavbar.vue';
 
 @Component({
   components: {
@@ -22,7 +22,7 @@ export default class LayOut extends Vue {
   created() {
     console.log("123")
   }
-} 
+}
 </script>
 
 <style scoped lang="less">

@@ -17,11 +17,11 @@ const routerMap = [
     children: [
       {
         path: 'home',
-        component: () => import('../views/Home.vue')
+        component: () => import('../views/home/index.vue')
       },
       {
         path: 'club',
-        component: () => import('../views/Club.vue')
+        component: () => import('../views/setting/index.vue')
       }
     ]
   }

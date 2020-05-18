@@ -21,6 +21,10 @@
   a {
     color: #000;
   }
+
+  .red {
+    color: red;
+  }
 </style>
 
 <body>
@@ -43,26 +47,26 @@
       <span class="red">{{$t("public.share28")}}</span>
     </div>
 
-    <div class="mag_1">
+    <div class="mar_10">
       <button @click="testGet">测试Get请求</button>
       <a>{{getData}}</a>
     </div>
 
-    <div class="mag_1">
+    <div class="mar_10">
       <button @click="testPost">测试Post请求</button>
       <a>{{postData}}</a>
     </div>
 
-    <div class="mag_1">
+    <div class="mar_10">
       <a>element-ui 兼容测试</a>
-      <div class="mag_1">
+      <div class="mar_10">
         <el-radio v-model="radio" label="1">备选项1</el-radio>
         <el-radio v-model="radio" label="2">备选项2</el-radio>
       </div>
-      <div class="mag_1" style="width: 200px;">
+      <div class="mar_10" style="width: 200px;">
         <el-input prefix-icon="el-icon-search" placeholder="请输入内容" size="small"></el-input>
       </div>
-      <div class="mag_1">
+      <div class="mar_10">
         <el-select v-model="value" placeholder="请选择" size="small">
           <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
           </el-option>
