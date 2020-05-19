@@ -5,10 +5,25 @@ import "babel-polyfill"
 
 Vue.config.productionTip = false;
 
-export interface UserForm {
-  name: string;
-  age: number;
-  sex: boolean
+export interface LoginForm {
+  phone: string;
+  password: string;
+}
+
+const validatePhone = (rule, value, callback) => {
+  if(!value) {
+    callback(new Error('请输入手机号'));
+  } else {
+    callback();
+  }
+}
+
+const validatePassword = (rule, value, callback) => {
+  if(!value) {
+    callback(new Error('请输入密码'))
+  } else {
+    callback()
+  }
 }
 
 @Component({
@@ -23,12 +38,19 @@ export interface UserForm {
 class Login extends Vue {
   public test_str: string = "数据绑定示例";
   public tab_id: number = 0;
-  public userForm: UserForm = {
-    name: "keshanju",
-    age: 0,
-    sex: false
+  public loginForm: LoginForm = {
+    phone: "",
+    password: "",
   }
-  public userModel: object = {}
+  public loginRules: object = {
+    phone: [
+      { validator: validatePhone, trigger: 'blur' }
+    ],
+    password: [
+      { validator: validatePassword, trigger: "blur" }
+    ]
+  }
+
 
   /**
    *
@@ -37,6 +59,18 @@ class Login extends Vue {
   public checkTabs(id: number) {
     this.tab_id = id;
     console.log(id)
+  }
+
+  public submitForm(ruleObj) {
+    this.$refs[ruleObj].validate((valid) => {
+      if(valid) {
+        alert("Submit Success!")
+      }
+    })
+  }
+
+  public resetForm(ruleObj) {
+
   }
 
   /**
