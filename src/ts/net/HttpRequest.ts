@@ -1,28 +1,19 @@
 import { IHttp } from "@/ts/interface/IHttp";
 import axios from "axios";
-import { DataModel, YuhanDataModel } from "@/ts/models/IdataModel";
+import { DataModel, AtfxDataModel} from "@/ts/models/IdataModel";
 import LocalStorageUtil from "@/ts/utils/LocalStorageUtil";
 
 export default class HttpRequest implements IHttp {
   //  项目接口根地址
   private BASE_URL = process.env.VUE_APP_CLIENT_PORTAL_API_K8S_URL;
 
-  // 成功请求
+  // 成功code
   public static HTTP_SUCCESS_NET_CODE = 0; // 成功的请求
-  // 错误code
+  // 错误code、其他code
   public static HTTP_ERROR_NEW_CODE = -50000; // 网络错误
   public static HTTP_TOKEN_EXPIRE = 400006; // token过期
   public static HTTP_ERROR_NOT_PAY = 400877; //
   public static HTTP_ERROR_WX_NOBIND = 400617; //
-
-  //  登录相关
-  public static HTTP_LOG_IN = "/login"
-
-  //  文章列表
-  public static URL_ARTICEL_LIST = "/educrm/article/list";
-
-  //  班级列表
-  public static URL_CLASS_LIST = "/educrm/class/list";
 
   /**
    * 设置请求根地址
@@ -43,12 +34,12 @@ export default class HttpRequest implements IHttp {
     params = { params };
     try {
       let backData = await axios.get(url, params);
-      let backData1 = backData.data as YuhanDataModel<T>;
+      let backData1 = backData.data as AtfxDataModel<T>;
       return backData1;
     } catch (e) {
-      const errorData = new DataModel();
+      const errorData = new AtfxDataModel();
       errorData.code = HttpRequest.HTTP_ERROR_NEW_CODE;
-      errorData.msg = "网络错误!";
+      errorData.message = "网络错误!";
       return errorData;
     }
   }
@@ -63,12 +54,12 @@ export default class HttpRequest implements IHttp {
     params["lang"] = LocalStorageUtil.getLanguage();
     try {
       let backData = await axios.post(url, params);
-      let backData1 = backData.data as YuhanDataModel<T>;
+      let backData1 = backData.data as AtfxDataModel<T>;
       return backData1;
     } catch (e) {
-      const errorData = new DataModel();
+      const errorData = new AtfxDataModel();
       errorData.code = HttpRequest.HTTP_ERROR_NEW_CODE;
-      errorData.msg = "网络错误!";
+      errorData.message = "网络错误!";
       return errorData;
     }
   }

@@ -79,7 +79,7 @@ class Test extends Vue {
     }
 
     public async testGet() {
-        let url = HttpRequest.HTTP_LOG_IN;
+        // let url = HttpRequest.HTTP_LOG_IN;
         // let param = new NewRequestModel();
         // param.size = 1;
         // param.page = 1;
@@ -91,14 +91,14 @@ class Test extends Vue {
      *
      */
     public async testPost() {
-        let url = HttpRequest.URL_ARTICEL_LIST;
-        let param = {
-            activity_id: 140,
-            present_type: 0,
-            size: 1,
-            page: 1,
-        };
-        this.postData = await this.http.post(url, param);
+        // let url = HttpRequest.URL_ARTICEL_LIST;
+        // let param = {
+        //     activity_id: 140,
+        //     present_type: 0,
+        //     size: 1,
+        //     page: 1,
+        // };
+        // this.postData = await this.http.post(url, param);
     }
 }
 

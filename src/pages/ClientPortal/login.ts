@@ -42,7 +42,7 @@ class Login extends Vue {
   /**
    *
    */
-  public async goLogin() {
+  public async goToLogin() {
     let params_obj = {
       phoneAreaCode: "86",
       phoneNumber: "13410905148",

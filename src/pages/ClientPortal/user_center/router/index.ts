@@ -8,12 +8,12 @@ const routerMap = [
     name: 'UserCenter',
     path: '/user_center/index.html',
     // redirect: '/user_center/home',
-    component: () => import('../views/LayOut.vue')
+    component: () => import('../views/layout/LayOut.vue')
   },
   {
     name: "LayOut",
     path: '/layout',
-    component: () => import('../views/LayOut.vue'),
+    component: () => import('../views/layout/LayOut.vue'),
     children: [
       {
         path: 'home',

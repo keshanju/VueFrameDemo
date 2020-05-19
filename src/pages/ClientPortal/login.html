@@ -10,15 +10,18 @@
 
 <body>
   <div id="app">
-    <div class="text_center pad_t20">
-      <el-form ref="userFormDom" :model="userModel" :rules="userModel" label-width="80px">
-        <el-form-item label="活动名称" :props="userModel.name">
-          <el-input v-model="userForm.name"></el-input>
-        </el-form-item>
-        <el-button type="primary" @click="goLogin">登录</el-button>
-      </el-form>
-    </div>
-    <p>{{test_str}}</p>
+    <el-form :model="userModel" status-icon :rules="userModel" ref="userFormDom" label-width="100px" class="demo-ruleForm">
+      <el-form-item label="电话" prop="pass">
+        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="密码" prop="checkPass">
+        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+        <el-button @click="resetForm('ruleForm')">重置</el-button>
+      </el-form-item>
+    </el-form>
     <a href="/user_center/index.html">跳转用户中心</a>
   </div>
 </body>
