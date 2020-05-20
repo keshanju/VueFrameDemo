@@ -1,6 +1,6 @@
 // console.log(process.env);
 var dist = 'dev/';
-var dir = 'leishen';
+var dir = 'ClientPortal';
 var base_url = '/';
 //解析命令参数
 var configParam = process.env.npm_lifecycle_event;

@@ -1,6 +1,6 @@
 import {Vue, Component, Prop} from 'vue-property-decorator';
 import LoginApi from './api/LoginApi'
-import {Input, Form, FormItem, Select, Button} from "element-ui";
+import {Input, Form as ElForm, Form, FormItem, Select, Button} from "element-ui";
 import "babel-polyfill"
 
 Vue.config.productionTip = false;
@@ -10,21 +10,6 @@ export interface LoginForm {
   password: string;
 }
 
-const validatePhone = (rule, value, callback) => {
-  if(!value) {
-    callback(new Error('请输入手机号'));
-  } else {
-    callback();
-  }
-}
-
-const validatePassword = (rule, value, callback) => {
-  if(!value) {
-    callback(new Error('请输入密码'))
-  } else {
-    callback()
-  }
-}
 
 @Component({
   components: {
@@ -42,12 +27,30 @@ class Login extends Vue {
     phone: "",
     password: "",
   }
+
+  
+  public validatePhone = (rule, value, callback) => {
+    if(!value) {
+      callback(new Error('请输入手机号'));
+    } else {
+      callback();
+    }
+  }
+
+  public validatePassword = (rule, value, callback) => {
+    if(!value) {
+      callback(new Error('请输入密码'))
+    } else {
+      callback()
+    }
+  }
+
   public loginRules: object = {
     phone: [
-      { validator: validatePhone, trigger: 'blur' }
+      { validator: this.validatePhone, trigger: 'blur' }
     ],
     password: [
-      { validator: validatePassword, trigger: "blur" }
+      { validator: this.validatePassword, trigger: "blur" }
     ]
   }
 
@@ -62,7 +65,7 @@ class Login extends Vue {
   }
 
   public submitForm(ruleObj) {
-    this.$refs[ruleObj].validate((valid) => {
+    (this.$refs[ruleObj] as ElForm).validate((valid) => {
       if(valid) {
         alert("Submit Success!")
       }
