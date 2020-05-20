@@ -1,6 +1,7 @@
+import "@/assets/less/main.less"
 import {Vue, Component, Prop} from 'vue-property-decorator';
 import LoginApi from './api/LoginApi'
-import {Input, Form as ElForm, Form, FormItem, Select, Button} from "element-ui";
+import {Input, Form as ElForm, Form, FormItem, Select, Row, Col, Button} from "element-ui";
 import "babel-polyfill"
 
 Vue.config.productionTip = false;
@@ -16,22 +17,26 @@ export interface LoginForm {
     'el-input': Input,
     'el-button': Button,
     'el-form': Form,
-    'el-form-item': FormItem
-
+    'el-form-item': FormItem,
+    'el-row': Row,
+    'el-col': Col,
   }
 })
-class Login extends Vue {
+export default class Login extends Vue {
   public test_str: string = "数据绑定示例";
   public tab_id: number = 0;
   public loginForm: LoginForm = {
     phone: "",
     password: "",
   }
-
-  
+  /**
+   *验证方法
+   *
+   * @memberof Login
+   */
   public validatePhone = (rule, value, callback) => {
     if(!value) {
-      callback(new Error('请输入手机号'));
+      callback(new Error('请填写您的用户名！'));
     } else {
       callback();
     }
@@ -39,7 +44,7 @@ class Login extends Vue {
 
   public validatePassword = (rule, value, callback) => {
     if(!value) {
-      callback(new Error('请输入密码'))
+      callback(new Error('请填写您的密码！'))
     } else {
       callback()
     }

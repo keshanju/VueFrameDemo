@@ -10,18 +10,25 @@
 
 <body>
   <div id="app">
-    <el-form ref="loginForm" :model="loginForm" status-icon :rules="loginRules" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="电话" prop="phone">
-        <el-input type="text" v-model="loginForm.phone" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input type="password" v-model="loginForm.password" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('loginForm')">提交</el-button>
-      </el-form-item>
-    </el-form>
-    <a href="/user_center/index.html">跳转用户中心</a>
+    <el-row type="flex" justify="space-between">
+      <el-col :span="12" :xs="24" :sm="24" :md="12" :lg="12">
+        <a href="/user_center/index.html">跳转用户中心</a>
+      </el-col>
+      <el-col :span="12" :xs="24" :sm="24" :md="12" :lg="12">
+        <el-form class="login_container flex_center_center flex_column" ref="loginForm" :model="loginForm" status-icon :rules="loginRules" label-width="100px" label-position="left">
+          <h3 class="login_form_title">Hi, Welcome To Visit My BLOG, I Am Wings , and Hope You Can Enjoy Your Time</h3>
+          <el-form-item label="用户名" prop="phone">
+            <el-input type="text" v-model="loginForm.phone" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="用户密码" prop="password">
+            <el-input type="password" v-model="loginForm.password" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submitForm('loginForm')">提交</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
   </div>
 </body>
 
