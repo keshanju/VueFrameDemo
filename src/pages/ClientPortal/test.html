@@ -4,10 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>测试界面</title>
 </head>
 
 <style>
+  #app {
+    padding: 24px;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
   h1 {
     text-align: center;
     color: red;
@@ -19,7 +24,7 @@
   }
 
   a {
-    color: #000;
+    color: blue;
   }
 
   .red {
@@ -29,55 +34,73 @@
 
 <body>
   <div id="app">
-    <div>
-      <a>当前浏览器:</a>
-      <span class="red">{{browserModel.browser}}</span>
-      <span class="red">{{browserModel.browser_version}}</span>
-    </div>
+    <el-row type="flex" justify="center">
+      <el-col :span="12" :xs="24" :sm="24">
+        <div class="mar_b25">
+          <span>自定义的语言选择组件:</span>
+          <lang-menu></lang-menu>
+        </div>
+        <div class="mar_b25">
+          <span>当前浏览器:</span>
+          <span class="red">{{browserModel.browser}}</span>
+          <span class="red">{{browserModel.browser_version}}</span>
+        </div>
 
-    <div>
-      <a>是否移动端:</a>
-      <span>【weixin】{{isDeviceWx}}</span>
-      <span>【android】{{isDeviceAndroid}}</span>
-      <span>【ios】{{isDeviceIos}}</span>
-    </div>
+        <div class="mar_b25">
+          <span>是否移动端:</span>
+          <span>【weixin】{{isDeviceWx}}</span>
+          <span>【android】{{isDeviceAndroid}}</span>
+          <span>【ios】{{isDeviceIos}}</span>
+        </div>
 
-    <div>
-      <a>多语言测试:</a>
-      <span class="red">{{$t("public.share28")}}</span>
-    </div>
+        <div class="mar_b25">
+          <span>多语言测试:</span>
+          <span class="red">{{$t("public.share28")}}</span>
+        </div>
 
-    <div class="mar_10">
-      <button @click="testGet">测试Get请求</button>
-      <a>{{getData}}</a>
-    </div>
+        <div class="mar_b25">
+          <span>数据绑定实例:</span>
+          <span>{{test_str}}</span>
+        </div>
 
-    <div class="mar_10">
-      <button @click="testPost">测试Post请求</button>
-      <a>{{postData}}</a>
-    </div>
+        <div class="mar_b25">
+          <el-button @click="testGet">测试Get请求</el-button>
+          <!--<a>{{getData}}</a>-->
+        </div>
 
-    <div class="mar_10">
-      <a>element-ui 兼容测试</a>
-      <div class="mar_10">
-        <el-radio v-model="radio" label="1">备选项1</el-radio>
-        <el-radio v-model="radio" label="2">备选项2</el-radio>
-      </div>
-      <div class="mar_10" style="width: 200px;">
-        <el-input prefix-icon="el-icon-search" placeholder="请输入内容" size="small"></el-input>
-      </div>
-      <div class="mar_10">
-        <el-select v-model="value" placeholder="请选择" size="small">
-          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-          </el-option>
-        </el-select>
-      </div>
-    </div>
+        <div class="mar_b25">
+          <el-button @click="testPost">测试Post请求</el-button>
+          <!--<a>{{postData}}</a>-->
+        </div>
+
+        <div class="mar_b25">
+          <a class="mar_b15">element-ui 兼容测试</a>
+          <div class="mar_b15">
+            <el-radio v-model="radio" label="1">备选项1</el-radio>
+            <el-radio v-model="radio" label="2">备选项2</el-radio>
+          </div>
+          <div class="mar_b15">
+            <el-input prefix-icon="el-icon-search" placeholder="请输入内容" size="small"></el-input>
+          </div>
+          <div class="mar_b15">
+            <el-select v-model="value" placeholder="请选择" size="small">
+              <el-option v-for="(item, index) in countryListArr" :key="index" :label="item.ISO" :value="item.name">
+              </el-option>
+            </el-select>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="12" :xs="24" :sm="24">
+        <!--路由占位符，子组件渲染测试-->
+        <div class="mar_b15">
+          <span>路由占位符，子组件渲染测试</span>
+          <router-view />
+        </div>
+      </el-col>
+    </el-row>
 
     <h1>***************************************************</h1>
 
-    <!--常见布局列表，分为两套，一套是flex，一套是fload;对应的每一个布局的实现要有两套写法-->
-    </div>
   </div>
 </body>
 

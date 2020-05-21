@@ -34,16 +34,16 @@ export default class GlobalConfig {
     this.server_type = this.checkEnv();
     if (this.server_type === 1) {
       // 开发环境
-      return "http://localhost:3000/api";
+      return "http://localhost:3001";
     } else if (this.server_type === 2) {
       // 测试环境
-      return "http://test.xiaomingkeji.com/api/index.php?r=";
+      return "http://localhost:3001";
     } else if (this.server_type === 3) {
       // 生产环境
-      return "https://api.yunhan100.com";
+      return "http://localhost:3001";
     } else if (this.server_type === 4) {
       // 验证环境
-      return "https://bbb.yunhan100.com";
+      return "http://localhost:3001";
     } else {
       return '';
     }

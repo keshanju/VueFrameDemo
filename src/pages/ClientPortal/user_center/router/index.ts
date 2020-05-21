@@ -5,9 +5,13 @@ Vue.use(Router);
 
 const routerMap = [
   {
+    name: 'Test',
+    path: '/test.html',
+    component: () => import('../views/layout/LayOut.vue')
+  },
+  {
     name: 'UserCenter',
     path: '/user_center/index.html',
-    // redirect: '/user_center/home',
     component: () => import('../views/layout/LayOut.vue')
   },
   {

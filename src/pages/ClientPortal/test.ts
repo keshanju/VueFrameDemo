@@ -1,17 +1,26 @@
 import "@/assets/less/main.less";
-import { Component, Vue } from "vue-property-decorator";
+import {Component, Vue} from "vue-property-decorator";
 import "babel-polyfill";
-import GlobalConfig from "./global.config";
 import HttpRequest from "@/ts/net/HttpRequest";
-import { IdataModel } from "@/ts/models/IdataModel";
-import WebParamModel from "@/ts/models/WebModel";
-import { TdappModel } from "@/ts/models/TdappModel";
-import JumpWebUtil from "@/ts/utils/JumpWebUtil";
-import { Input, Option, Radio, Select, Button } from "element-ui";
-import router from "./user_center/router";
-import VueI18n from "vue-i18n";
-import { LsLanguage } from "@/pages/ClientPortal/util/LsLanguage";
+import LoginApi from "./api/LoginApi"
+import CommonApi from "./api/CommonApi"
 
+import {AtfxDataModel} from "@/ts/models/IdataModel";
+import {TdappModel} from "@/ts/models/TdappModel";
+
+import JumpWebUtil from "@/ts/utils/JumpWebUtil";
+import {LsLanguage} from "@/pages/ClientPortal/util/LsLanguage";
+import Login from "@/pages/ClientPortal/login";
+
+import router from "./user_center/router/index";
+import './user_center/permission'
+
+import {toLoginRequestModel} from "@/ts/models/UserModel";
+
+import {Input, Option, Radio, Select, Button, Row, Col} from "element-ui";
+import LangMenu from "./components/LangMenu.vue"
+
+import VueI18n from "vue-i18n";
 //语言包
 Vue.use(VueI18n);
 let lang = LsLanguage.getInstance();
@@ -20,89 +29,97 @@ const i18n = new VueI18n(lang);
 Vue.config.productionTip = false;
 
 @Component({
-    components: {
-        "el-radio": Radio,
-        "el-input": Input,
-        "el-select": Select,
-        "el-option": Option,
-        "el-button": Button,
-    },
+  components: {
+    "el-radio": Radio,
+    "el-input": Input,
+    "el-select": Select,
+    "el-option": Option,
+    "el-button": Button,
+    "el-row": Row,
+    "el-col": Col,
+    "lang-menu": LangMenu
+  },
 })
 class Test extends Vue {
-    public test_str: string = "数据绑定示例";
-    public tab_id: number = 0;
+  public test_str: string = "数据绑定示例";
 
-    public webParam = WebParamModel.getInstace();
-    public browserModel = new TdappModel();
-    public isDeviceWx = JumpWebUtil.isDeviceWx();
-    public isDeviceAndroid = JumpWebUtil.isDeviceAndroid();
-    public isDeviceIos = JumpWebUtil.isDeviceIos();
+  public browserModel = new TdappModel();
+  public isDeviceWx = JumpWebUtil.isDeviceWx();
+  public isDeviceAndroid = JumpWebUtil.isDeviceAndroid();
+  public isDeviceIos = JumpWebUtil.isDeviceIos();
 
-    //element
-    public radio = "1";
-    public options = [
-        {
-            value: "选项1",
-            label: "黄金糕",
-        },
-        {
-            value: "选项2",
-            label: "双皮奶",
-        },
-    ];
-    public value = "";
-    public getData = null;
-    public postData = null;
+  //element-ui 数据选项
+  public radio = "1";
 
-    // 公共参数
-    public http: HttpRequest = new HttpRequest();
+  public value = "";
+  public getData = null;
+  public postData = null;
 
-    public backData: IdataModel<any> | undefined;
-    public imageHeadUrl: string = "";
-    public userUrl: string = "";
-    public webUrl: string = "";
+  // 公共参数
+  public http: HttpRequest = new HttpRequest();
 
-    created() {
-        this.setBaseUrl(GlobalConfig.getBaseUrl());
-        this.init();
-    }
+  // 接口地址
+  public HTTP_LOG_IN: string = '/login';
+  public COMMON_COUNTRY_LIST: string = '/commonCountryList';
+  public countryListArr: object[] = [{
+    "ISO": "CHN",
+    "name": "China"
+  }];
 
-    public init() {}
+  async created() {
+    // await this.init();
+  }
 
-    public setBaseUrl(url: string): void {
-        this.http.setBaseUrl(url);
-    }
+  /**
+   * 初始化加载的方法和接口
+   */
+  private async init() {
+    this.countryListArr = await CommonApi.getCountryList({});
+    console.log(this.countryListArr);
+  }
 
-    public jumpLogin() {
-        window.location.href = "/login";
-        // this.$router.push({ path: "/user_center/#/login" });
-    }
+  private async gotoLogin() {
+    /*登录前置逻辑：
+    1.表单验证
+    2.登录类型判断
+    3.判断地区
+    ......
+    */
 
-    public async testGet() {
-        // let url = HttpRequest.HTTP_LOG_IN;
-        // let param = new NewRequestModel();
-        // param.size = 1;
-        // param.page = 1;
-        // param.region_code = this.webParam.region_code;
-        // this.getData = await this.http.get<ActivityDetailRequestModel>(url, param);
-    }
+    // 备注：此处的接口传参字段严格按照接口的传参格式进行约束，若少写了一个参数，变回提前提示
+    let params: toLoginRequestModel = {
+      phoneAreaCode: "", /** 国家区号 */
+      phoneNumber: "", /** 電話號碼 */
+      email: "", /** 電子信箱 */
+      password: "", /** 會員帳戶密碼 */
+      deviceId: "", /** 裝置識別碼 */
+      entity: "", /** 簡訊subject */
+      loginType: "", /** 登入方式，value: phone,email */
+      platform: "string", /** 登入平台，vlaue: web, app */
+    };
+    let loginData = await LoginApi.toLogin(params);// api的请求方法单独拎出来凡在每个模块的文件里面定义，而页面的登录点击操作的逻辑则在当前的页面定义方法进行操作
+    console.log(loginData)
+  }
 
-    /**
-     *
-     */
-    public async testPost() {
-        // let url = HttpRequest.URL_ARTICEL_LIST;
-        // let param = {
-        //     activity_id: 140,
-        //     present_type: 0,
-        //     size: 1,
-        //     page: 1,
-        // };
-        // this.postData = await this.http.post(url, param);
-    }
+  public async testGet() {
+    let url = this.COMMON_COUNTRY_LIST;
+    let param = {};
+    this.getData = await this.http.get(url, param);
+    console.log(this.getData)
+  }
+
+  public async testPost() {
+    let url = this.HTTP_LOG_IN;
+    let param = {};
+    this.postData = await this.http.post(url, param);
+  }
+
+  public jumpLogin() {
+    window.location.href = "/login";
+  }
 }
 
 new Test({
-    router,
-    i18n,
+  router,
+  i18n,
 }).$mount("#app");
