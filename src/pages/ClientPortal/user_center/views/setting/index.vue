@@ -1,6 +1,6 @@
 <template>
     <div>
-        This is our Club!
+        This is Setting Page!
         {{msg_str}}
     </div>
 </template>

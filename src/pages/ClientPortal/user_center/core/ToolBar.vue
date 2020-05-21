@@ -29,7 +29,7 @@
 <script lang="ts">
   import {Component, Vue} from "vue-property-decorator"
   import {Cascader, Col, Dropdown, DropdownItem, DropdownMenu, Row} from "element-ui"
-
+  import "babel-polyfill"
 
   @Component({
     components: {
@@ -41,7 +41,7 @@
       "el-col": Col,
     }
   })
-  export default class TopNavbar extends Vue {
+  export default class ToolBar extends Vue {
     public value: string = "";
     public topNavData: any = [{
       value: 'zhinan',

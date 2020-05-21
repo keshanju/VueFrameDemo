@@ -1,6 +1,6 @@
 <template>
   <div>
-    This is my Home!
+    This is Home Page!
     {{msg_str}}
   </div>
 </template>
