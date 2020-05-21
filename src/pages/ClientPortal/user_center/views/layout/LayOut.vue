@@ -3,7 +3,11 @@
     LayOut
     <SideNavbar></SideNavbar>
     <TopNavbar></TopNavbar>
-    <router-view />
+    <transition>
+      <keep-alive>
+        <router-view />
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
@@ -19,8 +23,9 @@ import TopNavbar from '../../core/TopNavbar.vue';
   }
 })
 export default class LayOut extends Vue {
-  created() {
-    console.log("123")
+  created () {
+    // console.log("Hi，LayOut组件已经成功加载.......");
+    // console.log(this.$children)
   }
 }
 </script>

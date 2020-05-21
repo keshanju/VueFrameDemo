@@ -15,6 +15,8 @@ import Login from "@/pages/ClientPortal/login";
 import router from "./user_center/router/index";
 import './user_center/permission'
 
+import store from './user_center/store/index';
+
 import {toLoginRequestModel} from "@/ts/models/UserModel";
 
 import {Input, Option, Radio, Select, Button, Row, Col} from "element-ui";
@@ -38,8 +40,11 @@ Vue.config.productionTip = false;
     "el-row": Row,
     "el-col": Col,
     "lang-menu": LangMenu
-  },
+  }
 })
+// ...mapState([''])
+
+
 class Test extends Vue {
   public test_str: string = "数据绑定示例";
 
@@ -68,6 +73,7 @@ class Test extends Vue {
 
   async created() {
     // await this.init();
+    console.log(this.$store.state.total)
   }
 
   /**
@@ -117,9 +123,24 @@ class Test extends Vue {
   public jumpLogin() {
     window.location.href = "/login";
   }
+
+  public addSync() {
+    this.$store.commit('addCount');
+    console.log(this.$store.state.total)
+  }
+
+  public addAsync(num: any) {
+    this.$store.dispatch('asyncAdd', {num});
+    console.log(this.$store.state.total)
+  }
+
+  get total(): void {
+    return this.$store.state.total;
+  }
 }
 
 new Test({
   router,
   i18n,
+  store
 }).$mount("#app");

@@ -6,4 +6,8 @@ import router from './router/index'
 
 Vue.config.productionTip = false;
 
-new Vue({router}).$mount('#app');
+export default class User extends Vue {
+
+}
+
+new User({router}).$mount('#app');

@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
 const routerMap = [
   {
@@ -10,13 +10,8 @@ const routerMap = [
     component: () => import('../views/layout/LayOut.vue')
   },
   {
-    name: 'UserCenter',
-    path: '/user_center/index.html',
-    component: () => import('../views/layout/LayOut.vue')
-  },
-  {
-    name: "LayOut",
-    path: '/layout',
+    name: "User",
+    path: '/user_center',
     component: () => import('../views/layout/LayOut.vue'),
     children: [
       {
@@ -24,14 +19,14 @@ const routerMap = [
         component: () => import('../views/home/index.vue')
       },
       {
-        path: 'club',
+        path: 'setting',
         component: () => import('../views/setting/index.vue')
       }
     ]
   }
 ];
 let routes: any = routerMap;
-let rr = new Router({
+let rr = new VueRouter({
   mode: 'history',
   routes
 });

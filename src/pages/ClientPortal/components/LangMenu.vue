@@ -27,7 +27,11 @@
     }
   })
   export default class LangMenu extends Vue {
-    public defalulLang: string = "cn"
+    public defalulLang: string = "cn";
+
+    created() {
+      console.log("Hello, 我是语言选择组件")
+    }
   }
 </script>
 
