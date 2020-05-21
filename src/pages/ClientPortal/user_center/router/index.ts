@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import LayOut from "../views/layout/LayOut.vue"
 
 Vue.use(VueRouter);
 
@@ -7,12 +8,12 @@ const routerMap = [
   {
     name: 'Test',
     path: '/test.html',
-    component: () => import('../views/layout/LayOut.vue')
+    component: LayOut
   },
   {
     name: "User",
     path: '/user_center',
-    component: () => import('../views/layout/LayOut.vue'),
+    component: LayOut,
     children: [
       {
         path: 'home',

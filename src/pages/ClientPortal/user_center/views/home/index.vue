@@ -1,6 +1,7 @@
 <template>
   <div>
     This is my Home!
+    {{msg_str}}
   </div>
 </template>
 
@@ -9,9 +10,10 @@
 
   @Component({})
   export default class Home extends Vue {
+    public msg_str: string = "Dashboard Page";
 
     created() {
-      console.log("home 初始化")
+      console.log("Init Home Success!")
     }
   }
 </script>

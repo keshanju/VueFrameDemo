@@ -1,25 +1,34 @@
 <template>
-  <div>
-    LayOut
-    <SideNavbar></SideNavbar>
-    <TopNavbar></TopNavbar>
-    <transition>
-      <keep-alive>
-        <router-view />
-      </keep-alive>
-    </transition>
-  </div>
+  <el-row type="flex" justify="space-between">
+    <el-col style="width: 240px;">
+      <SideNavbar></SideNavbar>
+    </el-col>
+    <el-col style="padding: 24px;box-sizing: border-box;">
+      <TopNavbar></TopNavbar>
+      <el-divider></el-divider>
+      <div>
+        LayOut
+        <transition>
+          <router-view />
+        </transition>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script lang="ts">
 import {Vue, Component} from "vue-property-decorator";
 import SideNavbar from '../../core/SideNavbar.vue';
 import TopNavbar from '../../core/TopNavbar.vue';
+import {Row, Col, Divider} from "element-ui"
 
 @Component({
   components: {
     SideNavbar,
-    TopNavbar
+    TopNavbar,
+    "el-row": Row,
+    "el-col": Col,
+    "el-divider": Divider,
   }
 })
 export default class LayOut extends Vue {
