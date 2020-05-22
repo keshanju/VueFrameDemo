@@ -22,7 +22,7 @@ export interface LoginForm {
     'el-col': Col,
   }
 })
-export default class Login extends Vue {
+class ForgetPwd extends Vue {
   public test_str: string = "数据绑定示例";
   public tab_id: number = 0;
   public loginForm: LoginForm = {
@@ -99,4 +99,4 @@ export default class Login extends Vue {
   }
 }
 
-new Login().$mount("#app");
+new ForgetPwd().$mount("#app");

@@ -5,12 +5,10 @@ import HttpRequest from "@/ts/net/HttpRequest";
 import LoginApi from "./api/LoginApi"
 import CommonApi from "./api/CommonApi"
 
-import {AtfxDataModel} from "@/ts/models/IdataModel";
 import {TdappModel} from "@/ts/models/TdappModel";
 
 import JumpWebUtil from "@/ts/utils/JumpWebUtil";
 import {LsLanguage} from "@/pages/ClientPortal/util/LsLanguage";
-import Login from "@/pages/ClientPortal/login";
 
 import router from "./user_center/router/index";
 import './user_center/permission'
