@@ -8,24 +8,27 @@ Vue.use(VueRouter);
 const routerMap = [
   {
     name: 'Test',
-    path: '/test.html',
+    path: '/test',
     component: LayOut
   },
   {
     name: "Dashboard",
     path: '/',
-    redirect: '/home',
+    redirect: '/dashboard',
     component: LayOut,
     children: [
       {
-        path: 'home',
+        name: "Dashboard",
+        path: 'dashboard',
         component: () => import('../views/home/index.vue')
       },
       {
+        name: "Setting",
         path: 'setting',
         component: () => import('../views/setting/index.vue')
       },
       {
+        name: "Deposit",
         path: 'deposit',
         component: () => import('../views/deposit/index.vue')
       }

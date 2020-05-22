@@ -1,5 +1,5 @@
 <template>
-  <el-row type="flex" justify="space-between">
+  <el-row type="flex" justify="space-between" style="padding: 24px 24px 0;">
     <el-col :span="12">
       <span>用户中心</span>
     </el-col>

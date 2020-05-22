@@ -1,7 +1,7 @@
 <template>
   <div>
-    This is Home Page!
-    {{msg_str}}
+    This is {{msg_str}}
+
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 
   @Component({})
   export default class Home extends Vue {
-    public msg_str: string = "Dashboard Page";
+    public msg_str: string = "Dashboard Page!";
 
     created() {
       console.log("Init Home Success!")

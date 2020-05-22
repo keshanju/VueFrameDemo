@@ -1,13 +1,13 @@
 <template>
   <el-row type="flex" justify="space-between">
-    <el-col style="width: 240px;">
+    <el-col style="max-width: 240px;">
       <nav-bar></nav-bar>
     </el-col>
-    <el-col style="padding: 24px;box-sizing: border-box;">
+    <el-col style="">
       <tool-bar></tool-bar>
       <el-divider></el-divider>
-      <div>
-        LayOut
+      <div style="background-color: #eee;height: calc(100vh - 100px);padding: 24px;box-sizing: border-box;">
+        <p>LayOut Title</p>
         <transition name="fade-transform" mode="out-in">
           <router-view />
         </transition>

@@ -1,7 +1,7 @@
 <template>
     <div>
-        This is Setting Page!
-        {{msg_str}}
+        This is {{msg_str}}
+
     </div>
 </template>
 
@@ -12,7 +12,7 @@
 
     })
     export default class Setting  extends Vue {
-        public msg_str: string = "Setting Page";
+        public msg_str: string = "Setting Page!";
 
         created() {
             console.log("Init Setting Success!")

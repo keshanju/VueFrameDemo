@@ -12,10 +12,8 @@
         <span>导航一</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item index="/home">Dashboard</el-menu-item>
+        <el-menu-item index="/dashboard">Dashboard</el-menu-item>
         <el-menu-item index="/setting">Setting</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group>
         <el-menu-item index="/deposit">Deposit</el-menu-item>
       </el-menu-item-group>
     </el-submenu>

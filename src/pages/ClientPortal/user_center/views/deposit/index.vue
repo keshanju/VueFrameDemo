@@ -1,15 +1,15 @@
 <template>
   <div>
-    this is Deposit Page!
+    this is {{msg_str}}
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import {Vue, Component} from "vue-property-decorator"
 
   @Component({})
   export default class Deposit extends Vue {
-
+    public msg_str: string = "Deposit Page!"
   }
 </script>
 
