@@ -1,7 +1,5 @@
 import ProjectConfig from "../../../project.config";
 import $ from 'jquery';
-import Util from "@/ts/utils/Util";
-import LocalStorageUtil from "@/ts/utils/LocalStorageUtil";
 
 
 /**
