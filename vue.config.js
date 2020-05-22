@@ -11,28 +11,25 @@ if (configParamArr.length >= 2) {
   dir = configParamArr[0];
   dist = configParamArr[1] + '/';
   // leishen_pc leishen读取相对目录
-  if (dir == 'leishen_pc' || dir == 'leishen' || dir == 'leishen_wangba_pc') {
+  if (dir === 'leishen_pc' || dir === 'leishen' || dir === 'leishen_wangba_pc') {
     base_url = './';
   }
-  if (dir == 'leishen') {
-    base_url = './';
-  }
-  if (dist == 'debug/') {
+  if (dist === 'debug/') {
     dist = 'dev/';
     /**
      * 1开发环境 2测试 3生产 4预发布
      */
     process.env.VUE_APP_SERVER_TYPE = 1; //注意：debug可以随意改，但是不允许提交
-  } else if (dist == 'dev/') {
+  } else if (dist === 'dev/') {
     //不允许修改
     process.env.VUE_APP_SERVER_TYPE = 1;
-  } else if (dist == 'test/') {
+  } else if (dist === 'test/') {
     //不允许修改
     process.env.VUE_APP_SERVER_TYPE = 2;
-  } else if (dist == 'vfbuild/') {
+  } else if (dist === 'vfbuild/') {
     //不允许修改
     process.env.VUE_APP_SERVER_TYPE = 4;
-  } else if (dist == 'tbuild/') {
+  } else if (dist === 'tbuild/') {
     //不允许修改
     process.env.VUE_APP_SERVER_TYPE = 3;
   }
@@ -55,11 +52,11 @@ const debug = process.env.NODE_ENV !== 'production';
  * @param pathDir
  */
 function getEntry(globPath = './src/pages/**/*.html', pathDir = "./src/pages/") {
-  let entries = {}, basename, tmp, pathname, appname;
+  let entries = {}, basename, pathname;
   glob.sync(globPath).forEach(function (entry) {
-    full_path = entry.replace(path.extname(entry), "");
+    let full_path = entry.replace(path.extname(entry), "");
     //排除public文件夹
-    if (full_path.indexOf('/public') == -1) {
+    if (full_path.indexOf('/public') === -1) {
       pathname = entry.substring(pathDir.length);
       basename = pathname.replace("/", "_").replace(".html", "");
       entries[basename] = {
@@ -74,16 +71,39 @@ function getEntry(globPath = './src/pages/**/*.html', pathDir = "./src/pages/") 
 
 let pages = getEntry('./src/pages/' + dir + '/**/!(_*).html', "./src/pages_" + dir + "/");
 
-/**
- *
- */
+const cdn = {
+  // 忽略打包的第三方库
+  externals: {
+    'vue': 'Vue',
+    'vuex': 'Vuex',
+    'vue-router': 'VueRouter',
+    'axios': 'axios'
+  },
+
+  // 通过cdn方式使用
+  js: [
+    'https://cdn.bootcss.com/vue/2.6.11/vue.runtime.min.js',
+    'https://cdn.bootcss.com/vue-router/3.1.2/vue-router.min.js',
+    'https://cdn.bootcss.com/vuex/3.1.2/vuex.min.js',
+    'https://cdn.bootcss.com/axios/0.19.2/axios.min.js',
+    // 'https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js',
+    // 'https://cdn.bootcss.com/echarts/3.7.1/echarts.min.js'
+  ],
+
+  css: []
+};
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
+
+// 定义压缩文件类型
+const productionGzipExtensions = ['js', 'css'];
+
 module.exports = {
   publicPath: base_url,
   pages,
   productionSourceMap: false,
   devServer: {
-    index: 'index.html',
-    hot: true,
+    // index: 'index.html',
+    // hot: true,
     // host: 'localhost',
     // port: '3000',
     // proxy: {
@@ -107,23 +127,37 @@ module.exports = {
    * @param config
    */
   chainWebpack: config => {
-    //不压缩html
+    // 移除prefetch插件，避免加载多余的资源
+    config.plugins.delete('prefetch');
+
+    // 配置cdn引入
+    // for (const key in pages) {
+    //   config
+    //     .plugin('html-' + key)
+    //     .tap(args => {
+    //       args[0].cdn = cdn;
+    //       return args
+    //     });
+    // }
+    // 压缩html
     for (const key in pages) {
       config
         .plugin('html-' + key)
         .tap(args => {
           //是否最小化html 压缩html
-          args[0].minify = false
+          args[0].minify = true;
           return args
         });
     }
-    //注册插件
+    // 注册插件
     config.module
       .rule('html')
       .test(/\.(htm|html)$/i)
       .use('html-withimg-loader')
       .loader('html-withimg-loader');
-    //copy
+    // 打包分析
+    config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin);
+    // copy
     config
       .plugin('copy')
       .tap(args => {
@@ -132,11 +166,27 @@ module.exports = {
         // console.log(args);
         return args;
       });
-    //image
+    // image
     config.module
       .rule("images")
       .use("url-loader")
       .loader("url-loader")
-      .tap(options => Object.assign(options, { limit: 1 }));
+      .tap(options => Object.assign(options, {limit: 1}));
+  },
+
+  configureWebpack: config => {
+    // 忽略打包配置
+    // config.externals = cdn.externals;
+    config.plugins.push(
+      new CompressionWebpackPlugin({
+        filename: "[path].gz[query]",
+        algorithm: "gzip",
+        test: new RegExp(
+          `\\.(${productionGzipExtensions.join("|")})$`
+        ),
+        threshold: 10240,
+        minRatio: 0.8
+      })
+    );
   }
-}
+};

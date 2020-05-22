@@ -24,6 +24,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "clipboard": "^2.0.4",
+    "compression-webpack-plugin": "^4.0.0",
     "cropperjs": "^1.4.3",
     "cross-env": "^5.2.0",
     "echarts": "^4.2.1",
@@ -68,7 +69,8 @@
     "rd": "^2.0.1",
     "typescript": "^3.0.0",
     "vue-lazyload": "^1.2.6",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "webpack-bundle-analyzer": "^3.8.0"
   },
   "postcss": {
     "plugins": {
