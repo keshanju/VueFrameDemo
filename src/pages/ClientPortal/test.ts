@@ -10,10 +10,10 @@ import {TdappModel} from "@/ts/models/TdappModel";
 import JumpWebUtil from "@/ts/utils/JumpWebUtil";
 import {LsLanguage} from "@/pages/ClientPortal/util/LsLanguage";
 
-import router from "./user_center/router/index";
+import router from "./user_center/router/index";// 用法同vuex
 import './user_center/permission'
 
-import store from './user_center/store/index';
+import store from './user_center/store/index';// 引入状态管理库，并在当前实例下进行注册
 
 import {toLoginRequestModel} from "@/ts/models/UserModel";
 
@@ -21,7 +21,7 @@ import {Input, Option, Radio, Select, Button, Row, Col} from "element-ui";
 import LangMenu from "./components/LangMenu.vue"
 
 import VueI18n from "vue-i18n";
-//语言包
+//语言包 ，用法同vuex和vue-router
 Vue.use(VueI18n);
 let lang = LsLanguage.getInstance();
 lang.init();
@@ -50,6 +50,8 @@ class Test extends Vue {
   public isDeviceWx = JumpWebUtil.isDeviceWx();
   public isDeviceAndroid = JumpWebUtil.isDeviceAndroid();
   public isDeviceIos = JumpWebUtil.isDeviceIos();
+
+  public Lang: string = "EN";
 
   //element-ui 数据选项
   public radio = "1";

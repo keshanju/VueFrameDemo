@@ -4,6 +4,8 @@ import LoginApi from './api/LoginApi'
 import {Input, Form as ElForm, Form, FormItem, Select, Row, Col, Button} from "element-ui";
 import "babel-polyfill"
 
+import JumpWebUtil from "@/ts/utils/JumpWebUtil";
+
 Vue.config.productionTip = false;
 
 export interface LoginForm {
@@ -28,7 +30,7 @@ class Login extends Vue {
   public loginForm: LoginForm = {
     phone: "",
     password: "",
-  }
+  };
   /**
    *验证方法
    *
@@ -57,7 +59,7 @@ class Login extends Vue {
     password: [
       { validator: this.validatePassword, trigger: "blur" }
     ]
-  }
+  };
 
 
   /**
@@ -72,7 +74,7 @@ class Login extends Vue {
   public submitForm(ruleObj) {
     (this.$refs[ruleObj] as ElForm).validate((valid) => {
       if(valid) {
-        alert("Submit Success!")
+        JumpWebUtil.backUser()
       }
     })
   }

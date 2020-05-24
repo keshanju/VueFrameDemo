@@ -14,7 +14,7 @@ export default class JumpWebUtil {
     public static HTML_NAME_REGISTER = 'register.html'; // 注册
     public static HTML_NAME_FORGETPWD = 'forgetpwd.html'; // 忘记密码
     public static HTML_NAME_PROTOCOL = 'protocol.html'; // 用户协议
-    public static HTML_NAME_USER = 'user.html'; // 个人中心
+    public static HTML_NAME_USER = '/user_center'; // 个人中心
     public static HTML_NAME_DOWNLOAD = 'https://xiazai.leigod.com'; // 下载站
     public static HTML_NAME_NEWS = 'news.html'; // 资讯
     public static HTML_NAME_NOTIFY = 'notice.html'; // 公告
