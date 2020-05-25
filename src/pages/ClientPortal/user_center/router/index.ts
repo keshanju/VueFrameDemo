@@ -5,7 +5,7 @@ import "babel-polyfill"
 
 Vue.use(VueRouter);
 
-const routerMap = [
+const routerMap =  [
   {
     name: 'Test',
     path: '/test',
@@ -40,9 +40,13 @@ const routerMap = [
     ]
   }
 ];
-let routes: any = routerMap;
-let rr = new VueRouter({
+let routes = routerMap;
+let router = new VueRouter({
   // mode: 'history',
   routes
 });
-export default rr
+
+router.beforeEach((to, from, next) => {
+
+})
+export default router

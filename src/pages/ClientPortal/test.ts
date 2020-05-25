@@ -17,7 +17,7 @@ import store from './user_center/store/index';// 引入状态管理库，并在�
 
 import {toLoginRequestModel} from "@/ts/models/UserModel";
 
-import {Input, Option, Radio, Select, Button, Row, Col} from "element-ui";
+import {Input, Option, Radio, Select, Button, Row, Col, Message} from "element-ui";
 import LangMenu from "./components/LangMenu.vue"
 
 import VueI18n from "vue-i18n";
@@ -111,13 +111,19 @@ class Test extends Vue {
     let url = this.COMMON_COUNTRY_LIST;
     let param = {};
     this.getData = await this.http.get(url, param);
-    console.log(this.getData)
   }
 
   public async testPost() {
     let url = this.HTTP_LOG_IN;
     let param = {};
-    this.postData = await this.http.post(url, param);
+    let data = await this.http.post(url, param);
+    if(data.code === HttpRequest.HTTP_SUCCESS_NET_CODE) {
+      alert("Post Successful!")
+    } else if(data.code === HttpRequest.HTTP_TOKEN_EXPIRE ) {
+      alert("Token Expirt!")
+    } else {
+      Message.error("Post Failed...")
+    }
   }
 
   public jumpLogin() {

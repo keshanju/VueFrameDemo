@@ -8,12 +8,10 @@ export default class HttpRequest implements IHttp {
   private BASE_URL = process.env.VUE_APP_CLIENT_PORTAL_API_K8S_URL;
 
   // 成功code
-  public static HTTP_SUCCESS_NET_CODE = 0; // 成功的请求
+  public static HTTP_SUCCESS_NET_CODE = 1004; // 成功的请求
   // 错误code、其他code
-  public static HTTP_ERROR_NEW_CODE = -50000; // 网络错误
-  public static HTTP_TOKEN_EXPIRE = 400006; // token过期
-  public static HTTP_ERROR_NOT_PAY = 400877; //
-  public static HTTP_ERROR_WX_NOBIND = 400617; //
+  public static HTTP_ERROR_NEW_CODE = 2019; // 网络错误
+  public static HTTP_TOKEN_EXPIRE = 2021; // token过期
 
   /**
    * 设置请求根地址
