@@ -9,7 +9,7 @@
       <div style="background-color: #eee;height: calc(100vh - 118px);padding: 24px;box-sizing: border-box;">
         <!--<p>LayOut Title</p>-->
         <transition name="fade-transform" mode="out-in">
-          <router-view />
+          <router-view/>
         </transition>
       </div>
     </el-col>

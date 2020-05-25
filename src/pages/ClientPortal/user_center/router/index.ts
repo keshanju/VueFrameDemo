@@ -40,13 +40,12 @@ const routerMap =  [
     ]
   }
 ];
-let routes = routerMap;
 let router = new VueRouter({
   // mode: 'history',
-  routes
+  routes: routerMap
 });
 
 router.beforeEach((to, from, next) => {
-
-})
+//  这里可加一些关于路由跳转的逻辑
+});
 export default router
