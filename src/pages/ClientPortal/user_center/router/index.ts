@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter, { Route } from 'vue-router'
 import LayOut from "../views/layout/LayOut.vue"
 import "babel-polyfill"
 
 Vue.use(VueRouter);
 
-const routerMap =  [
+const routerMap = [
   {
     name: 'Test',
     path: '/test',
@@ -45,7 +45,12 @@ let router = new VueRouter({
   routes: routerMap
 });
 
-router.beforeEach((to, from, next) => {
-//  这里可加一些关于路由跳转的逻辑
+router.beforeEach((to: Route, from: Route, next: any) => {
+  next()
 });
+
+router.afterEach(() => {
+
+});
+
 export default router
