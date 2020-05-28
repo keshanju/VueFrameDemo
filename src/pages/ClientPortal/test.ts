@@ -11,7 +11,6 @@ import JumpWebUtil from "@/ts/utils/JumpWebUtil";
 import {LsLanguage} from "@/pages/ClientPortal/util/LsLanguage";
 
 import router from "./user_center/router/index";// 用法同vuex
-import './user_center/permission'
 
 import store from './user_center/store/index';// 引入状态管理库，并在当前实例下进行注册
 
