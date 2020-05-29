@@ -20,22 +20,22 @@ const routerMap = [
       {
         name: "Dashboard",
         path: 'dashboard',
-        component: () => import('../views/dashboard/index.vue')
+        component: () => import/* webpackChunkName: "dashboard" */('../views/dashboard/index.vue')
       },
       {
         name: "Setting",
         path: 'setting',
-        component: () => import('../views/setting/index.vue')
+        component: () => import/* webpackChunkName: "setting" */('../views/setting/index.vue')
       },
       {
         name: "Deposit",
         path: 'deposit',
-        component: () => import('../views/deposit/index.vue')
+        component: () => import/* webpackChunkName: "deposit" */('../views/deposit/index.vue')
       },
       {
         name: "MarketOutlook",
         path: 'marketoutlook',
-        component: () => import('../views/marketOutlook/index.vue')
+        component: () => import/* webpackChunkName: "marketOutlook" */('../views/marketOutlook/index.vue')
       }
     ]
   }
