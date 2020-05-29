@@ -5,6 +5,7 @@ import {Input, Form as ElForm, Form, FormItem, Select, Row, Col, Button} from "e
 import "babel-polyfill"
 
 import JumpWebUtil from "@/ts/utils/JumpWebUtil";
+import HttpRequest from '@/ts/net/HttpRequest';
 
 Vue.config.productionTip = false;
 
@@ -97,7 +98,23 @@ class Login extends Vue {
       loginType: "",
       platform: ""
     };
-    await LoginApi.toLogin(params_obj);
+    let res = await LoginApi.toLogin(params_obj);
+    if (res.code === HttpRequest.HTTP_SUCCESS_NET_CODE) {
+      // do something
+      this.LoginSuccess()
+    } else if (res.code === HttpRequest.HTTP_TOKEN_EXPIRE) {
+
+    } else {
+      this.LoginFailed()
+    }
+  }
+
+  public LoginSuccess() {
+    // handel success
+  }
+
+  public LoginFailed() {
+    // handel fail
   }
 }
 

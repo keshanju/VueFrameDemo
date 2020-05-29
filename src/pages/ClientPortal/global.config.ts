@@ -8,6 +8,9 @@ import $ from 'jquery';
 export default class GlobalConfig {
   public static server_type;
 
+  /**
+   * 检测系统环境
+   */
   public static checkEnv() {
     let nowUrl = $('html').attr('domain');
     if (nowUrl) {
@@ -26,7 +29,7 @@ export default class GlobalConfig {
   }
 
   /**
-   * 服务器url
+   * api服务器url
    */
   public static getBaseUrl() {
     this.server_type = this.checkEnv();
@@ -54,40 +57,39 @@ export default class GlobalConfig {
     this.server_type = this.checkEnv();
     if (this.server_type === 1) {
       // 开发环境
-      return "http://dev-picture.leigod.com";
+      return "http://localhost:3003";
     } else if (this.server_type === 2) {
       // 测试环境
-      return "http://test-picture.leigod.com";
+      return "http://localhost:3003";
     } else if (this.server_type === 3) {
       // 生产环境
-      return "https://picture.leigod.com";
+      return "http://localhost:3003";
     } else if (this.server_type === 4) {
       // 验证环境
-      return "http://vf-picture.leigod.com";
+      return "http://localhost:3003";
     } else {
       return '';
     }
   }
 
   /**
-   *  官网路径
+   *  不同环境的项目域名地址
    */
   public static getWebBaseUrl() {
     this.server_type = this.checkEnv();
     console.log('环境' + this.server_type)
     if (this.server_type === 1) {
       // 开发环境
-      return "http://dev-www.leigod.com";
-      // return 'http://localhost:8080';
+      return 'http://localhost:8080';
     } else if (this.server_type === 2) {
       // 测试环境
-      return "http://test-www.leigod.com";
+      return 'http://localhost:8081';
     } else if (this.server_type === 3) {
       // 生产环境
-      return "https://www.leigod.com";
+      return 'http://localhost:8082';
     } else if (this.server_type === 4) {
       // 验证环境
-      return "https://vf-www.leigod.com";
+      return 'http://localhost:8083';
     } else {
       return '';
     }
@@ -100,17 +102,17 @@ export default class GlobalConfig {
     this.server_type = this.checkEnv();
     if (this.server_type === 1) {
       // 开发环境
-      return "http://dev-xiazai.leigod.com/";
+      return "http://dev-xiazai.atfx.com/";
       // return 'http://localhost:8080';
     } else if (this.server_type === 2) {
       // 测试环境
-      return "http://test-xiazai.leigod.com";
+      return "http://test-xiazai.atfx.com";
     } else if (this.server_type === 3) {
       // 生产环境
-      return "https://xiazai.leigod.com/";
+      return "https://xiazai.atfx.com/";
     } else if (this.server_type === 4) {
       // 验证环境
-      return "https://vf-xiazai.leigod.com/";
+      return "https://vf-xiazai.atfx.com/";
     } else {
       return '';
     }
@@ -123,16 +125,16 @@ export default class GlobalConfig {
     this.server_type = this.checkEnv();
     if (this.server_type === 1) {
       // 开发环境
-      return "http://dev-user.leigod.com";
+      return "http://dev-user.atfx.com";
     } else if (this.server_type === 2) {
       // 测试环境
-      return "http://test-user.leigod.com";
+      return "http://test-user.atfx.com";
     } else if (this.server_type === 3) {
       // 生产环境
-      return "https://user.leigod.com";
+      return "https://user.atfx.com";
     } else if (this.server_type === 4) {
       // 验证环境
-      return "https://vf-user.leigod.com";
+      return "https://vf-user.atfx.com";
     } else {
       const origin = window.location.origin;
       return origin;
