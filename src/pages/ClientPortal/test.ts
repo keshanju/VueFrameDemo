@@ -142,6 +142,10 @@ class Test extends Vue {
   get total(): void {
     return this.$store.state.total;
   }
+
+  public changeLang(arg: string) {
+    console.log(arg)
+  }
 }
 
 new Test({

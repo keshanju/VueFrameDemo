@@ -1,22 +1,23 @@
 <template>
   <div>
-    <el-dropdown>
+    <el-dropdown @command="changeLangInfo">
       <span class="el-dropdown-link">
         下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>{{lang}}</el-dropdown-item>
+        <el-dropdown-item command="lang">{{lang}}</el-dropdown-item>
         <el-dropdown-item>狮子头</el-dropdown-item>
         <el-dropdown-item>螺蛳粉</el-dropdown-item>
         <el-dropdown-item disabled>双皮奶</el-dropdown-item>
         <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+        <el-dropdown-item divided>{{computed_test}}</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue, Watch} from "vue-property-decorator";
+  import {Component, Prop, Vue, Watch, Emit} from "vue-property-decorator";
   import {Dropdown, DropdownItem, DropdownMenu} from "element-ui"
 
   @Component({
@@ -31,11 +32,21 @@
   })
   export default class LangMenu extends Vue {
     public defalulLang: string = "cn";
-    public computerdNum: number = 0;
+    public computerdNum: number = 0; //共有属性
+    private info: string = ""; //私有属性
+
+    // 装饰器的具体使用文档
+    // https://github.com/kaorun343/vue-property-decorator
 
     @Prop(String)
-    lang: string;
+    readonly lang: string;
 
+    @Emit('change-lang')
+    changeLangInfo() {
+      console.log("you click me");
+      return "cn"
+    }
+    //
     // @Model
 
     @Watch('lang', {immediate: true, deep: true})
@@ -43,18 +54,11 @@
       this.defalulLang = val;
     }
 
-    // @Emit
-    //
     // @Mixins
 
-    // 获取计算属性l
+    // 计算属性
     get computed_test(): number {
-      return this.computerdNum + 1
-    }
-
-    // 设置计算属性
-    set computed_test(param: number) {
-      this.computerdNum = param
+      return this.computerdNum + 10
     }
 
     created() {
