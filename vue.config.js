@@ -10,7 +10,7 @@ console.log(configParamArr);
 if (configParamArr.length >= 2) {
   dir = configParamArr[0];
   dist = configParamArr[1] + '/';
-  // leishen_pc leishen读取相对目录
+  // 可根据不同项目读取相对目录
   if (dir === 'leishen_pc' || dir === 'leishen' || dir === 'leishen_wangba_pc') {
     base_url = './';
   }
