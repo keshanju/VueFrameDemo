@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts">
-  import {Vue, Component} from "vue-property-decorator"
-  import {Carousel, CarouselItem, Row, Col} from "element-ui"
+  import {Component, Vue} from "vue-property-decorator"
+  import {Carousel, CarouselItem, Col, Row} from "element-ui"
 
   @Component({
     components: {
@@ -25,6 +25,7 @@
   export default class Dashboard extends Vue {
     public msg_str: string = "Dashboard"
   }
+
 </script>
 
 <style scoped lang="less">
